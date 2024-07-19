@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.TotaleVerbaliPerTrasgressoreViewModel>
+
+<h2>Totale Verbali per Trasgressore</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id Trasgressore</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Totale Verbali</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TrasgressoreId</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Cognome</td>
+                    <td>@item.TotaleVerbali</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Nessun dato trovato.</td>
+            </tr>
+        }
+    </tbody>
+</table>

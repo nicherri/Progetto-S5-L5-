@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.Trasgressore>
+
+<h2>Elenco Trasgressori</h2>
+<a class="btn btn-primary" asp-controller="Trasgressori" asp-action="Create">Crea Nuovo Trasgressore</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Indirizzo</th>
+            <th>Codice Fiscale</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var trasgressore in Model)
+            {
+                <tr>
+                    <td>@trasgressore.Id</td>
+                    <td>@trasgressore.Cognome</td>
+                    <td>@trasgressore.Nome</td>
+                    <td>@trasgressore.Indirizzo</td>
+                    <td>@trasgressore.CodiceFiscale</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">Nessun trasgressore trovato.</td>
+            </tr>
+        }
+    </tbody>
+</table>

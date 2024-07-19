@@ -1,0 +1,20 @@
+﻿@page
+@model PoliziaMunicipaleApp.Models.Violazione
+
+<h2>Nuova Violazione</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Descrizione">Descrizione</label>
+        <input type="text" class="form-control" id="Descrizione" name="Descrizione" />
+    </div>
+    <div class="form-group">
+        <label for="PuntiDecurtati">Punti Decurtati</label>
+        <input type="number" class="form-control" id="PuntiDecurtati" name="PuntiDecurtati" />
+    </div>
+    <div class="form-group">
+        <label for="Importo">Importo</label>
+        <input type="number" step="0.01" class="form-control" id="Importo" name="Importo" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salva</button>
+</form>

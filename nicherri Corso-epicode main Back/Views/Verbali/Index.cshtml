@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.VerbaleViewModel>
+
+<h2>Elenco Verbali</h2>
+<a class="btn btn-primary" asp-controller="Verbali" asp-action="Create">Crea Nuovo Verbale</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id Trasgressore</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Numero Verbale</th>
+            <th>Descrizione Violazione</th>
+            <th>Data Violazione</th>
+            <th>Importo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TrasgressoreId</td>
+                    <td>@item.NomeTrasgressore</td>
+                    <td>@item.CognomeTrasgressore</td>
+                    <td>@item.NumeroVerbale</td>
+                    <td>@item.DescrizioneViolazione</td>
+                    <td>@item.DataViolazione.ToShortDateString()</td>
+                    <td>@item.Importo</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">Nessun verbale trovato.</td>
+            </tr>
+        }
+    </tbody>
+</table>

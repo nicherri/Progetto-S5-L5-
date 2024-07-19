@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.ViolazioniOltre10PuntiViewModel>
+
+<h2>Violazioni Oltre 10 Punti</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id Trasgressore</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Descrizione Violazione</th>
+            <th>Data Violazione</th>
+            <th>Importo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TrasgressoreId</td>
+                    <td>@item.Cognome</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Descrizione</td>
+                    <td>@item.DataViolazione.ToShortDateString()</td>
+                    <td>@item.Importo</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">Nessun dato trovato.</td>
+            </tr>
+        }
+    </tbody>
+</table>

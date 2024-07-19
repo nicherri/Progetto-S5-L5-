@@ -1,0 +1,29 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>Totale Punti Decurtati per Trasgressore</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Trasgressore Id</th>
+            <th>Totale Punti</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TrasgressoreId</td>
+                    <td>@item.TotalePunti</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2">Nessun dato trovato.</td>
+            </tr>
+        }
+    </tbody>
+</table>

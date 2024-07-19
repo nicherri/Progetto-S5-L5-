@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.Violazione>
+
+<h2>Elenco Violazioni</h2>
+<a class="btn btn-primary" asp-controller="Violazioni" asp-action="Create">Crea Nuova Violazione</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descrizione</th>
+            <th>Punti Decurtati</th>
+            <th>Importo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var violazione in Model)
+            {
+                <tr>
+                    <td>@violazione.Id</td>
+                    <td>@violazione.Descrizione</td>
+                    <td>@violazione.PuntiDecurtati</td>
+                    <td>@violazione.Importo</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Nessuna violazione trovata.</td>
+            </tr>
+        }
+    </tbody>
+</table>

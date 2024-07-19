@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.MulteViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">BEnvenuto </h1>
+</div>
+
+<div class="container mt-5">
+    <form asp-action="Cerca la tua multa" method="post" class="form-inline">
+        <div class="form-group mb-2">
+            <label for="searchTerm" class="sr-only">Search</label>
+            <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Numero Verbale o Codice Fiscale" required>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="searchType" class="sr-only">Search Type</label>
+            <select class="form-control" id="searchType" name="searchType" required>
+                <option value="NumeroVerbale">Numero Verbale</option>
+                <option value="CodiceFiscale">Codice Fiscale</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Cerca</button>
+    </form>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Descrizione</th>
+                    <th>Data Violazione</th>
+                    <th>Punti Decurtati</th>
+                    <th>Importo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var multa in Model)
+                {
+                    <tr>
+                        <td>@multa.Descrizione</td>
+                        <td>@multa.DataViolazione.ToString("dd/MM/yyyy")</td>
+                        <td>@multa.PuntiDecurtati</td>
+                        <td>@multa.Importo.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (Model != null)
+    {
+        <div class="alert alert-info mt-4" role="alert">
+            Non ci sono multe a tuo carico.
+        </div>
+    }
+</div>
